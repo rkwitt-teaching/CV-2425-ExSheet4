@@ -44,6 +44,8 @@ The *first* parameter corresponds to $h$, the **second** to $o$. In the construc
 3. the output of $\phi(B\phi(Ax + a)+b)$ and
 4. the output of $C\phi(B\phi(Ax + a)+b)$.
 
+e.g., via `return a,b,c,d` (assuming the variables `a,b,c,d` hold the corresponding results.
+
 Automatic evaluation will instantiate your `MLP` class with random 
 values of $h$ and $o$ and use a random input tensor `x = torch.rand(16,3)`.
 
