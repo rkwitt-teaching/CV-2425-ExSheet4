@@ -16,7 +16,7 @@ with
 - $B \in \mathbb{R}^{h \times h}, b \in \mathbb{R}^h$
 - $C \in \mathbb{R}^{h \times o}$
 
-using `torch.nn.Linear` and `torch.nn.functional.relu`. In particular, you should implement this within a class
+using `torch.nn.Linear` and `torch.nn.functional.relu`. In particular, you should implement this within the class (derived from `nn.Module`)
 
 ```python
 class MLP(nn.Module):
@@ -31,20 +31,20 @@ class MLP(nn.Module):
         pass # replace with correct return statement
 ```
 
-such a way that you can pass **two** parameters when instantiating the class, i.e.,
+such that you can pass **two** parameters when instantiating the class, i.e.,
 
 ```python
 net = MLP(10,3)
 ```
 
-The *first* parameter corresponds to $h$, the **second** to $o$. In the constructor `__init__`, you can instantiate the `nn.Linear` layers, the `forward` method should then implements the flow of information. The `forward` method should return three things: 
+which specify $g$ (*first* parameter) and $o$ (the **second** parameter). In the constructor `__init__`, you can instantiate the appropriately configured `nn.Linear` layers, and the `forward` method should then implement the flow of information. In particular, the `forward` method should return three things:
 
 1. the output of $Ax + a$,
 2. the output of $\phi(Ax + a)$,
 3. the output of $\phi(B\phi(Ax + a)+b)$ and
 4. the output of $C\phi(B\phi(Ax + a)+b)$.
 
-e.g., via `return a,b,c,d` (assuming the variables `a,b,c,d` hold the corresponding results.
+This can be achieved, e.g., via `return a,b,c,d` (assuming the variables `a,b,c,d` hold the corresponding results).
 
 Automatic evaluation will instantiate your `MLP` class with random 
 values of $h$ and $o$ and use a random input tensor `x = torch.rand(16,3)`.
